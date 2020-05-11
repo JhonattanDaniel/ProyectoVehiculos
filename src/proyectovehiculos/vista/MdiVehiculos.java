@@ -31,6 +31,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
     private Usuario usuarioAutenticado;
     private GestionUsuario gestionListarUsuario;
     private GestionVehiculo gestionListaVehiculo;
+    
 
     /**
      * Creates new form MdiVehiculos
@@ -1149,7 +1150,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
 
     private void mnuListarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListarUsuarioActionPerformed
         // TODO add your handling code here:
-        gestionListarUsuario.llenarUsuarios();
+       
         llenarUsuario();
         jfrmListarUsuarios.repaint();
         jfrmListarUsuarios.show();
@@ -1202,8 +1203,8 @@ public class MdiVehiculos extends javax.swing.JFrame {
                 } catch (ExcepcionVehiculo ex) {
                     JOptionPane.showMessageDialog(this, ex.getMessage(), "error en vehiculo", 0);
                 }
-            } else if (rdCoche.isSelected()== true){
-                Coche coh =new Coche(chbxExtras.isSelected(), txtMatricula.getText(), 
+            } else if (rdCoche.isSelected() == true) {
+                Coche coh = new Coche(chbxExtras.isSelected(), txtMatricula.getText(),
                         Integer.parseInt(txtKm.getText()), chbxEstado.isSelected(), Double.parseDouble(txtValor.getText()));
                 try {
                     gestionListaVehiculo.adicionarVehiculo(coh);
@@ -1212,8 +1213,8 @@ public class MdiVehiculos extends javax.swing.JFrame {
                 } catch (ExcepcionVehiculo ex) {
                     JOptionPane.showMessageDialog(this, ex.getMessage(), "error en vehiculo", 0);
                 }
-            } else if (rdFurgoneta.isSelected()== true){
-                Furgoneta fur =new Furgoneta(Short.parseShort(spnCapFurgoneta.getValue().toString()), txtMatricula.getText(), 
+            } else if (rdFurgoneta.isSelected() == true) {
+                Furgoneta fur = new Furgoneta(Short.parseShort(spnCapFurgoneta.getValue().toString()), txtMatricula.getText(),
                         Integer.parseInt(txtKm.getText()), chbxEstado.isSelected(), Double.parseDouble(txtValor.getText()));
                 try {
                     gestionListaVehiculo.adicionarVehiculo(fur);
@@ -1224,22 +1225,6 @@ public class MdiVehiculos extends javax.swing.JFrame {
                 }
             }
         }
-        //byte capacidad = Byte.parseByte(spnCapacidadMateria.getValue().toString());
-        //Materia mat = new Materia(txtCodigoMateria.getText(), txtNombreMateria.getText(),
-        // capacidad);
-        // try {
-        //controlUniversidad.adicionarMateria(mat);
-        // pintarMaterias();
-        // txtCodigoMateria.setText("");
-        //txtNombreMateria.setText("");
-        // spnCapacidadMateria.setValue(0);
-        // } catch (UniversidadExcepcion ex) {
-        //JOptionPane.showMessageDialog(this,
-        //   ex.getMessage(), "Error en materia", 0);
-        // }
-
-        // }
-
     }//GEN-LAST:event_btnCrearVehiculoActionPerformed
 
     private void rdMotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdMotoActionPerformed
@@ -1260,22 +1245,19 @@ public class MdiVehiculos extends javax.swing.JFrame {
 
     private void rbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbClienteActionPerformed
         validarBotonUsuario();
-        rbCliente.setActionCommand("");
     }//GEN-LAST:event_rbClienteActionPerformed
 
     private void rbAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAdministradorActionPerformed
         validarBotonUsuario();
-        rbAdministrador.setActionCommand("0");
     }//GEN-LAST:event_rbAdministradorActionPerformed
 
     private void rbUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbUsuarioActionPerformed
-        validarBotonUsuario();
-        rbCliente.setActionCommand("1");
+        validarBotonUsuario();   
     }//GEN-LAST:event_rbUsuarioActionPerformed
 
     private void mnuListarMotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListarMotosActionPerformed
         // TODO add your handling code here:
-        gestionListaVehiculo.llenarVehiculos();
+
         listarMotos();
         jfrmListadoMoto.repaint();
         jfrmListadoMoto.show();
@@ -1335,11 +1317,12 @@ public class MdiVehiculos extends javax.swing.JFrame {
 
     private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
         // TODO add your handling code here:
+        int tipo = 0; boolean bandera = false;
         if (rbAdministrador.isSelected() == false && rbCliente.isSelected() == false
                 && rbUsuario.isSelected() == false) {
             JOptionPane.showMessageDialog(this,
                     "Debe seleccionar un tipo de usuario", "Datos Faltantes", 2);
-        } else if (rbAdministrador.isSelected() == true) {
+        } else if (rbAdministrador.isSelected() == true || rbUsuario.isSelected() == true) {
             if (txtCrearCedula.getText() == null || txtCrearCedula.getText().compareTo("") == 0) {
                 JOptionPane.showMessageDialog(this,
                         "Debe diligenciar una cedula", "Datos Faltantes", 2);
@@ -1352,6 +1335,8 @@ public class MdiVehiculos extends javax.swing.JFrame {
             } else if (txtCrearPassword.getText() == null || txtCrearPassword.getText().compareTo("") == 0) {
                 JOptionPane.showMessageDialog(this,
                         "Debe seleccionar la contraseña", "Datos Faltantes", 2);
+            }else {
+                bandera = true;
             }
 
         } else if (rbCliente.isSelected() == true) {
@@ -1361,11 +1346,29 @@ public class MdiVehiculos extends javax.swing.JFrame {
             } else if (txtCrearNombre.getText() == null || txtCrearNombre.getText().compareTo("") == 0) {
                 JOptionPane.showMessageDialog(this,
                         "Debe diligenciar el nombre", "Datos Faltantes", 2);
+            }else{
+                bandera =true;
             }
-        } else {
+        } 
+        if (bandera) {
             JOptionPane.showMessageDialog(this, "correcto");
-        }
-
+            if(rbAdministrador.isSelected()== true){
+                tipo = 0;
+                
+            }else if (rbUsuario.isSelected() == true){
+                tipo = 1;
+            }else{
+                tipo = 2;
+            }
+            Usuario us = new Usuario(txtCrearCedula.getText(), txtCrearNombre.getText(), txtCrearCorreo.getText(), txtCrearPassword.getPassword().toString(),gestionListarUsuario.getTipoUsuarios()[tipo]);
+            try {
+                
+             gestionListarUsuario.adicionarUsuario(us);
+             llenarUsuario();
+            } catch (ExcepcionVehiculo ex) {
+                Logger.getLogger(MdiVehiculos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+}
 //byte capacidad = Byte.parseByte(spnCapacidadMateria.getValue().toString());
 //Materia mat = new Materia(txtCodigoMateria.getText(), txtNombreMateria.getText(),
 //capacidad);

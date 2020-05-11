@@ -45,10 +45,10 @@ public class GestionUsuario {
     }
 
     private void llenarTiposUsuario() {
-        tipoUsuarios = new TipoUsuario[2];
+        tipoUsuarios = new TipoUsuario[3];
         tipoUsuarios[0] = new TipoUsuario("0", "Administrador");
         tipoUsuarios[1] = new TipoUsuario("1", "Usuario");
-
+        tipoUsuarios[2] = new TipoUsuario("2", "Cliente");
     }
 
     public void llenarUsuarios() {
@@ -71,30 +71,23 @@ public class GestionUsuario {
         return null;
     }
 
-    public void adicionarUsuario(Usuario usuario) throws ExcepcionVehiculo
-    {
-        if(validarExistenciaUsuario(usuario))
-        {
-            
-            throw new ExcepcionVehiculo("El usuario con cedula "+usuario.getCedula()+ 
-                    " ya existe");
-        }
-        else
-        {  
+    public void adicionarUsuario(Usuario usuario) throws ExcepcionVehiculo {
+        if (validarExistenciaUsuario(usuario)) {
+
+            throw new ExcepcionVehiculo("El usuario con cedula " + usuario.getCedula()
+                    + " ya existe");
+        } else {
             usuarios.add(usuario);
             // agregarla en el archivo
         }
     }
-    
-    private boolean validarExistenciaUsuario(Usuario usuario)
-    {
-        for(Usuario usu: this.usuarios)
-        {
-            if(usu.getCedula().compareTo(usuario.getCedula())==0)
-            {
+
+    private boolean validarExistenciaUsuario(Usuario usuario) {
+        for (Usuario usu : this.usuarios) {
+            if (usu.getCedula().compareTo(usuario.getCedula()) == 0) {
                 return true;
             }
-        }        
+        }
         return false;
     }
 }
