@@ -14,6 +14,7 @@ import proyectovehiculos.modelo.Coche;
 import proyectovehiculos.modelo.Furgoneta;
 import proyectovehiculos.modelo.Moto;
 import proyectovehiculos.modelo.Usuario;
+import proyectovehiculos.utilidades.ArchivoPlano;
 
 /**
  *
@@ -36,11 +37,15 @@ public class GestionVehiculo implements Serializable {
     }
 
     public void llenarVehiculos() {
-        vehiculos = new ArrayList<>();
+        //vehiculos = new ArrayList<>();
 
-        vehiculos.add(new Moto(true, "123qw", 100, true, 50000));
-        vehiculos.add(new Coche(true, "789poi", 200, true, 100000));
-        vehiculos.add(new Furgoneta((short) 8, "123asd", 150, false, 150000));
+        //vehiculos.add(new Moto(true, "123qw", 100, true, 50000));
+        //vehiculos.add(new Coche(true, "789poi", 200, true, 100000));
+        //vehiculos.add(new Furgoneta((short) 8, "123asd", 150, false, 150000));
+        vehiculos = ArchivoPlano.cargarMotos();
+        vehiculos = ArchivoPlano.cargarCoches();
+        vehiculos = ArchivoPlano.cargarFurgonetas();
+        
     }
 
     public List<AbstractVehiculo> obtenerVehiculo (String tipo) {
