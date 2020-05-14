@@ -7,6 +7,7 @@ package proyectovehiculos.getionar;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.List;
 import proyectovehiculos.abstracta.AbstractVehiculo;
 import proyectovehiculos.excepciones.ExcepcionVehiculo;
@@ -37,18 +38,18 @@ public class GestionVehiculo implements Serializable {
     }
 
     public void llenarVehiculos() {
-        //vehiculos = new ArrayList<>();
-
+        vehiculos = new ArrayList<AbstractVehiculo>();
         //vehiculos.add(new Moto(true, "123qw", 100, true, 50000));
-        //vehiculos.add(new Coche(true, "789poi", 200, true, 100000));
-        //vehiculos.add(new Furgoneta((short) 8, "123asd", 150, false, 150000));
-        vehiculos = ArchivoPlano.cargarMotos();
-        vehiculos = ArchivoPlano.cargarCoches();
-        vehiculos = ArchivoPlano.cargarFurgonetas();
-        
+                //vehiculos.add(new Coche(true, "789poi", 200, true, 100000));
+                //vehiculos.add(new Furgoneta((short) 8, "123asd", 150, false, 150000));
+                ArchivoPlano.cargarFurgonetas(vehiculos);
+                ArchivoPlano.cargarCoches(vehiculos);
+                ArchivoPlano.cargarMotos(vehiculos);
+                
+
     }
 
-    public List<AbstractVehiculo> obtenerVehiculo (String tipo) {
+    public List<AbstractVehiculo> obtenerVehiculo(String tipo) {
         List<AbstractVehiculo> listaTemp = new ArrayList<>();
         //Recorrer todo el listado de personas , pero solo voy a adicionar a la lista la que me digan
         for (AbstractVehiculo vehiculo : vehiculos) {

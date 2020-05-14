@@ -1,5 +1,5 @@
 casco;matricula;km;estado;valorAlquiler
-true;123-qwe;100;false;20000
-false;123-asd;200;true;15000
-false;098-mnb;100;true;20000
-false;098-poi;150;true;17000
+true;123qwe;100;false;20000
+true;123asd;200;true;15000
+true;098mnb;100;true;20000
+true;098poi;150;true;17000

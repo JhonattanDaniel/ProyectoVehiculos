@@ -23,6 +23,10 @@ import proyectovehiculos.modelo.Usuario;
  */
 public class ArchivoPlano {
 
+    public ArchivoPlano() {
+       
+    }
+
     public static List<Usuario> cargarUsuarios(TipoUsuario[] tipos) {
         List<Usuario> listado = new ArrayList<>();
         File archivo = null;
@@ -64,8 +68,9 @@ public class ArchivoPlano {
 
         return listado;
     }
-    public static List<AbstractVehiculo>  cargarMotos() {
-        List<AbstractVehiculo> listado = new ArrayList<>();
+
+    public static  void cargarMotos(List<AbstractVehiculo> vehiculos) {
+        //List<AbstractVehiculo> listado = new ArrayList<>();
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
@@ -88,8 +93,7 @@ public class ArchivoPlano {
                         Boolean.parseBoolean(datos[3]),
                         Double.parseDouble(datos[4]));
 
-                listado.add(moto);
-
+                vehiculos.add(moto);
             }
         } catch (Exception e) {
             System.out.println("El archivo no existe = " + e.getMessage());
@@ -103,10 +107,11 @@ public class ArchivoPlano {
             }
         }
 
-        return listado;
+       // return vehiculos;
     }
-    public static List<AbstractVehiculo>  cargarCoches() {
-        List<AbstractVehiculo> listado = new ArrayList<>();
+
+    public static void cargarCoches(List<AbstractVehiculo> vehiculos) {
+        //List<AbstractVehiculo> listado = new ArrayList<>();
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
@@ -129,7 +134,7 @@ public class ArchivoPlano {
                         Boolean.parseBoolean(datos[3]),
                         Double.parseDouble(datos[4]));
 
-                listado.add(coche);
+                vehiculos.add(coche);
 
             }
         } catch (Exception e) {
@@ -144,10 +149,11 @@ public class ArchivoPlano {
             }
         }
 
-        return listado;
+        //return listado;
     }
-    public static List<AbstractVehiculo>  cargarFurgonetas() {
-        List<AbstractVehiculo> listado = new ArrayList<>();
+
+    public static void cargarFurgonetas(List<AbstractVehiculo> vehiculos) {
+        //List<AbstractVehiculo> listado = new ArrayList<>();
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
@@ -170,8 +176,9 @@ public class ArchivoPlano {
                         Boolean.parseBoolean(datos[3]),
                         Double.parseDouble(datos[4]));
 
-                listado.add(furgoneta);
+                vehiculos.add(furgoneta);
 
+               
             }
         } catch (Exception e) {
             System.out.println("El archivo no existe = " + e.getMessage());
@@ -185,6 +192,6 @@ public class ArchivoPlano {
             }
         }
 
-        return listado;
+        //return listado;
     }
 }
