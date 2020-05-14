@@ -38,10 +38,8 @@ public class GestionVehiculo implements Serializable {
     }
 
     public void llenarVehiculos() {
-        vehiculos = new ArrayList<AbstractVehiculo>();
-        //vehiculos.add(new Moto(true, "123qw", 100, true, 50000));
-                //vehiculos.add(new Coche(true, "789poi", 200, true, 100000));
-                //vehiculos.add(new Furgoneta((short) 8, "123asd", 150, false, 150000));
+        vehiculos = new ArrayList<>();
+        
                 ArchivoPlano.cargarFurgonetas(vehiculos);
                 ArchivoPlano.cargarCoches(vehiculos);
                 ArchivoPlano.cargarMotos(vehiculos);
