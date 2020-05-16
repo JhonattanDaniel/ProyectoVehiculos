@@ -6,6 +6,7 @@
 package proyectovehiculos.modelo;
 
 import proyectovehiculos.abstracta.AbstractVehiculo;
+import proyectovehiculos.abstracta.VehiculoAble;
 
 /**
  *
@@ -56,5 +57,4 @@ public class Moto extends AbstractVehiculo {
         return dataV;
 
     }
-
 }

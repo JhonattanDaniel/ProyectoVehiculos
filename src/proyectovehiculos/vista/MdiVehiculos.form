@@ -99,6 +99,26 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <Menu class="javax.swing.JMenu" name="mnuAlquila">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alquiler"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="mnuListaAlquiler">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Lista de alquiler"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mnuAlaquilarVehiculo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Alquilar Vehiculo"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuAlaquilarVehiculoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
           </SubComponents>
         </Menu>
       </SubComponents>
@@ -146,20 +166,26 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-                          <Component id="jfrmCrearVehiculos" min="-2" pref="0" max="-2" attributes="0"/>
+                          <Component id="jfrmCrearVehiculos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                          <Component id="jfrmListarUsuarios" min="-2" pref="0" max="-2" attributes="0"/>
+                          <Component id="jfrmListarUsuarios" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jfrmCrearUsuarios" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                          <Component id="jfrmAlquilar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jfrmCrearUsuarios" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jfrmListadoGeneralVehiculo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jfrmListadoGeneralVehiculo" min="-2" pref="0" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jfrmAcceder" min="-2" max="-2" attributes="0"/>
@@ -168,28 +194,28 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="732" max="-2" attributes="0"/>
-                      <Component id="jfrmListarVehiculos" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="jfrmListarVehiculos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-                      <Component id="jfrmListadoCoche" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="jfrmListadoCoche" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="638" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jfrmListadoMoto" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="jfrmListadoMoto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="145" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jfrmListadoFurgoneta" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="jfrmListadoFurgoneta" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="145" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -207,46 +233,49 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                                  <Component id="jfrmListarUsuarios" min="-2" pref="0" max="-2" attributes="0"/>
+                                  <Component id="jfrmListarUsuarios" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                  <Component id="jfrmCrearVehiculos" min="-2" pref="0" max="-2" attributes="0"/>
+                                  <Component id="jfrmCrearVehiculos" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
-                                  <Component id="jfrmListadoGeneralVehiculo" min="-2" pref="0" max="-2" attributes="0"/>
+                                  <Component id="jfrmListadoGeneralVehiculo" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jfrmCrearUsuarios" min="-2" pref="0" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jfrmCrearUsuarios" min="-2" max="-2" attributes="0"/>
+                              <Component id="jfrmAlquilar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="334" max="32767" attributes="0"/>
+                  <EmptySpace pref="242" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                      <Component id="jfrmListarVehiculos" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="jfrmListarVehiculos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="858" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
-                      <Component id="jfrmListadoCoche" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="jfrmListadoCoche" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="750" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jfrmListadoMoto" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="jfrmListadoMoto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="719" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jfrmListadoFurgoneta" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="jfrmListadoFurgoneta" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="719" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -307,7 +336,7 @@
                       <Component id="txtPassword" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Component id="btnIngresar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="252" max="32767" attributes="0"/>
+                      <EmptySpace pref="380" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -361,7 +390,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="468" max="-2" attributes="0"/>
-                      <EmptySpace pref="84" max="32767" attributes="0"/>
+                      <EmptySpace pref="89" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1080,6 +1109,29 @@
               </SubComponents>
             </Container>
           </SubComponents>
+        </Container>
+        <Container class="javax.swing.JInternalFrame" name="jfrmAlquilar">
+          <Properties>
+            <Property name="closable" type="boolean" value="true"/>
+            <Property name="defaultCloseOperation" type="int" value="1"/>
+            <Property name="iconifiable" type="boolean" value="true"/>
+            <Property name="maximizable" type="boolean" value="true"/>
+            <Property name="resizable" type="boolean" value="true"/>
+            <Property name="visible" type="boolean" value="false"/>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="539" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="306" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
         </Container>
       </SubComponents>
     </Container>

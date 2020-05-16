@@ -39,17 +39,16 @@ public class GestionVehiculo implements Serializable {
 
     public void llenarVehiculos() {
         vehiculos = new ArrayList<>();
-        
-                ArchivoPlano.cargarFurgonetas(vehiculos);
-                ArchivoPlano.cargarCoches(vehiculos);
-                ArchivoPlano.cargarMotos(vehiculos);
-                
+
+        ArchivoPlano.cargarFurgonetas(vehiculos);
+        ArchivoPlano.cargarCoches(vehiculos);
+        ArchivoPlano.cargarMotos(vehiculos);
 
     }
 
     public List<AbstractVehiculo> obtenerVehiculo(String tipo) {
         List<AbstractVehiculo> listaTemp = new ArrayList<>();
-        //Recorrer todo el listado de personas , pero solo voy a adicionar a la lista la que me digan
+        //Recorrer todo el listado, pero solo voy a adicionar a la lista la que me digan
         for (AbstractVehiculo vehiculo : vehiculos) {
             switch (tipo) {
                 case "Moto":
@@ -93,5 +92,5 @@ public class GestionVehiculo implements Serializable {
         }
         return false;
     }
-
+    
 }
