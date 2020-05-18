@@ -56,6 +56,11 @@ public class Coche extends AbstractVehiculo{
         return dataV;
     }
 
+    @Override
+    public String toString() {
+        return this.getMatricula() + "-" + this.getClass().getSimpleName();
+    }
+
     
     
 }

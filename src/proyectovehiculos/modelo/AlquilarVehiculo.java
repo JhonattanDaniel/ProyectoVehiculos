@@ -18,11 +18,10 @@ public class AlquilarVehiculo {
     public Date fechaAlquiler;
     public Date fechaDevolucion;
 
-    public AlquilarVehiculo(AbstractVehiculo vehiculo, Usuario usuarioRegistra, Date fechaAlquiler, Date fechaDevolucion) {
+    public AlquilarVehiculo(AbstractVehiculo vehiculo, Usuario usuarioRegistra) {
         this.vehiculo = vehiculo;
         this.usuarioRegistra = usuarioRegistra;
-        this.fechaAlquiler = fechaAlquiler;
-        this.fechaDevolucion = fechaDevolucion;
+        
     }
 
     public AbstractVehiculo getVehiculo() {

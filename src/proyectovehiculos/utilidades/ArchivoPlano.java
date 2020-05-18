@@ -22,6 +22,7 @@ import proyectovehiculos.modelo.Usuario;
  * @author Daniel Quintero
  */
 public class ArchivoPlano {
+    
 
     public ArchivoPlano() {
        

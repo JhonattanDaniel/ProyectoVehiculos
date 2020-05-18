@@ -78,4 +78,8 @@ public class Usuario implements Serializable {
                 
              return data;
     }
+    
+    public String toString1() {
+        return this.getNombre() + "" + this.getCedula();
+    }
 }
