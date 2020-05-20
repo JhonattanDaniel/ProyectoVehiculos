@@ -78,5 +78,5 @@ public abstract class AbstractVehiculo implements VehiculoAble {
         return dataV;
 
     }
-  
+  public  abstract String listarCombos();
 }

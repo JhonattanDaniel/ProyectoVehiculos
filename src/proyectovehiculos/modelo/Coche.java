@@ -6,13 +6,14 @@
 package proyectovehiculos.modelo;
 
 import proyectovehiculos.abstracta.AbstractVehiculo;
+import proyectovehiculos.vista.MdiVehiculos;
 
 /**
  *
  * @author Daniel Quintero
  */
-public class Coche extends AbstractVehiculo{
-    
+public class Coche extends AbstractVehiculo {
+
     public boolean extras;
 
     public Coche(boolean extras, String matricula, int km, boolean estado, double valorAlquiler) {
@@ -28,10 +29,11 @@ public class Coche extends AbstractVehiculo{
         this.extras = extras;
     }
 
-    
     @Override
     public String mostrarDatos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String mensaje = "el vehiculo tipo " + this.getClass().getSimpleName() + " con matricula " + this.getMatricula()
+                + " tiene un kilomeraje actual de " + this.getKm() + " un valor de alquiler de " + this.getValorAlquiler() + " y el estado de extras es " + this.isExtras();
+        return mensaje;
     }
 
     @Override
@@ -46,21 +48,19 @@ public class Coche extends AbstractVehiculo{
 
     @Override
     public void alquilar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        setEstado(false);
     }
 
     @Override
     public Object[] obtenerArregloObjeto() {
-         Object[] dataV = {getMatricula(), getKm(), isEstado(), getValorAlquiler(), isExtras() };
+        Object[] dataV = {getMatricula(), getKm(), isEstado(), getValorAlquiler(), isExtras()};
 
         return dataV;
     }
 
     @Override
-    public String toString() {
+    public String listarCombos() {
         return this.getMatricula() + "-" + this.getClass().getSimpleName();
     }
 
-    
-    
 }

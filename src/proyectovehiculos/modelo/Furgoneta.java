@@ -28,10 +28,11 @@ public class Furgoneta extends AbstractVehiculo {
         this.capacidad = capacidad;
     }
 
-    
     @Override
     public String mostrarDatos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String mensaje = "el vehiculo tipo " + this.getClass().getSimpleName() + " con matricula " + this.getMatricula()
+                + " tiene un kilomeraje actual de " + this.getKm() + " un valor de alquiler de " + this.getValorAlquiler() + " y una capacidad de " + this.getCapacidad();
+        return mensaje;
     }
 
     @Override
@@ -46,18 +47,18 @@ public class Furgoneta extends AbstractVehiculo {
 
     @Override
     public void alquilar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        setEstado(false);
     }
 
     @Override
     public Object[] obtenerArregloObjeto() {
-         Object[] dataV = {getMatricula(), getKm(), isEstado(), getValorAlquiler(), getCapacidad() };
+        Object[] dataV = {getMatricula(), getKm(), isEstado(), getValorAlquiler(), getCapacidad()};
 
         return dataV;
     }
 
     @Override
-    public String toString() {
+    public String listarCombos() {
         return this.getMatricula() + "-" + this.getClass().getSimpleName();
     }
 }

@@ -92,6 +92,13 @@ public class GestionVehiculo implements Serializable {
         }
         return false;
     }
-   
-    }
+ public AbstractVehiculo encontrarMatricula(String matr) {
+        for (AbstractVehiculo vehiculo : vehiculos) {
 
+            if (vehiculo.getMatricula().equals(matr)) {
+                      return vehiculo;  
+            }
+            
+        }return null;
+    }
+}

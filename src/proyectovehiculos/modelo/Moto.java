@@ -5,6 +5,8 @@
  */
 package proyectovehiculos.modelo;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+import javax.swing.JOptionPane;
 import proyectovehiculos.abstracta.AbstractVehiculo;
 import proyectovehiculos.abstracta.VehiculoAble;
 
@@ -29,10 +31,13 @@ public class Moto extends AbstractVehiculo {
         this.casco = casco;
     }
 
-    
     @Override
     public String mostrarDatos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        String mensaje = "el vehiculo tipo " + this.getClass().getSimpleName() + " con matricula " + this.getMatricula()
+                + " tiene un kilomeraje actual de " + this.getKm() + " un valor de alquiler de " + this.getValorAlquiler() + " y el estado del casco es " + this.isCasco();
+        return mensaje;
+
     }
 
     @Override
@@ -47,7 +52,7 @@ public class Moto extends AbstractVehiculo {
 
     @Override
     public void alquilar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        setEstado(false);
     }
 
     @Override
@@ -57,9 +62,10 @@ public class Moto extends AbstractVehiculo {
         return dataV;
 
     }
-    
+
     @Override
-    public String toString() {
+    public String listarCombos() {
         return this.getMatricula() + "-" + this.getClass().getSimpleName();
     }
+
 }

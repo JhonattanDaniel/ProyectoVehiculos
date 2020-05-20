@@ -79,7 +79,7 @@ public class Usuario implements Serializable {
              return data;
     }
     
-    public String toString1() {
-        return this.getNombre() + "" + this.getCedula();
+    public String listarComboCliente() {
+        return this.getNombre() + "-" + this.getCedula();
     }
 }
