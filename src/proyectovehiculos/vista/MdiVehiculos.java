@@ -28,13 +28,14 @@ import proyectovehiculos.modelo.Coche;
 import proyectovehiculos.modelo.Furgoneta;
 import proyectovehiculos.modelo.Moto;
 import proyectovehiculos.modelo.Usuario;
+import proyectovehiculos.utilidades.ArchivoPDF;
 
 /**
  *
  * @author Daniel Quintero
  */
 public class MdiVehiculos extends javax.swing.JFrame {
-
+    
     private GestionUsuario gestionLogin;
     private Usuario usuarioAutenticado;
     private GestionUsuario gestionListarUsuario;
@@ -46,17 +47,26 @@ public class MdiVehiculos extends javax.swing.JFrame {
     public MdiVehiculos() {
         initComponents();
     }
-
+    
     private void iniciarMenus(boolean estado) {
-        mnuCrearVehiculo.setVisible(estado);
-        mnuListarVehiculo.setVisible(estado);
         mnuUsuario.setVisible(estado);
         mnuVehiculo.setVisible(estado);
-
+        mnuAlquila.setVisible(estado);
+        mnuCrearVehiculo.setVisible(estado);
+        mnuListarVehiculo.setVisible(estado);
+        mnuListadoGeneralVehiculo.setVisible(estado);
+        mnuListarCoches.setVisible(estado);
+        mnuListarFurgonetas.setVisible(estado);
+        mnuListarMotos.setVisible(estado);
+        mnuCrearUsuario.setVisible(estado);
+        mnuListarUsuario.setVisible(estado);
+        mnuAlaquilarVehiculo.setVisible(estado);
+        mnuListaAlquiler.setVisible(estado);
+              
     }
-
+    
     private void gestionarPermisosMenu() {
-
+        
         switch (usuarioAutenticado.getTipoUsuario().getCodigo()) {
             ///administrador
             case "0":
@@ -69,15 +79,17 @@ public class MdiVehiculos extends javax.swing.JFrame {
                 mnuVehiculo.setVisible(true);
                 mnuListarVehiculo.setVisible(true);
                 mnuListarUsuario.setVisible(true);
+                mnuListaAlquiler.setVisible(true);
+                
                 break;
-
+            
         }
     }
-
+    
     public void validarBotonVehiculo() {
         if (rdMoto.isSelected()) {
             chbxCasco.setEnabled(true);
-
+            
         } else {
             chbxCasco.setEnabled(false);
         }
@@ -91,9 +103,9 @@ public class MdiVehiculos extends javax.swing.JFrame {
         } else {
             spnCapFurgoneta.setEnabled(false);
         }
-
+        
     }
-
+    
     public void validarBotonUsuario() {
         if (rbAdministrador.isSelected()) {
             txtCrearCorreo.setEnabled(true);
@@ -117,25 +129,27 @@ public class MdiVehiculos extends javax.swing.JFrame {
             txtCrearPassword.setEnabled(true);
         }
     }
-
+    
     public void llenarComboMatricula() {
-        cbxMatriculas.removeAllItems();
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbxMatriculas.getModel();
+        model.removeAllElements();
         for (AbstractVehiculo vehiculo : gestionListaVehiculo.vehiculos) {
             if (vehiculo.isEstado() == true) {
-                cbxMatriculas.addItem(vehiculo.listarCombos());
+                model.addElement(vehiculo);
             }
         }
-
+        cbxMatriculas.setModel(model);
     }
-
-    public void llenarComboCliente() {
-        cbxClientes.removeAllItems();
+    
+    public void llenarComboCliente(){
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbxClientes.getModel();
+        model.removeAllElements();
         for (Usuario usuario : gestionListarUsuario.getUsuarios()) {
             if (usuario.tipoUsuario.getCodigo().compareTo("2") == 0) {
-                cbxClientes.addItem(usuario.listarComboCliente());
+                model.addElement(usuario);
             }
         }
-
+        cbxClientes.setModel(model);
     }
 
     //if (vehiculo.getMatricula().compareTo(cbxMatriculas.getItemListeners().toString()) == 0) {
@@ -164,9 +178,12 @@ public class MdiVehiculos extends javax.swing.JFrame {
         jfrmListarVehiculos = new javax.swing.JInternalFrame();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblVehiculos = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
         jfrmListarUsuarios = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsuario = new javax.swing.JTable();
+        jLabel14 = new javax.swing.JLabel();
+        btnUsuariosPDF = new javax.swing.JButton();
         jfrmCrearVehiculos = new javax.swing.JInternalFrame();
         txtMatricula = new javax.swing.JTextField();
         txtKm = new javax.swing.JTextField();
@@ -203,21 +220,38 @@ public class MdiVehiculos extends javax.swing.JFrame {
         jfrmListadoGeneralVehiculo = new javax.swing.JInternalFrame();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblGeneralVehiculos = new javax.swing.JTable();
+        btnGeneralPDF = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
         jfrmListadoCoche = new javax.swing.JInternalFrame();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblCoche = new javax.swing.JTable();
+        jLabel16 = new javax.swing.JLabel();
+        btnCochesPDF = new javax.swing.JButton();
         jfrmListadoMoto = new javax.swing.JInternalFrame();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblMoto = new javax.swing.JTable();
+        jLabel17 = new javax.swing.JLabel();
+        btnMotosPDF = new javax.swing.JButton();
         jfrmListadoFurgoneta = new javax.swing.JInternalFrame();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblFurgoneta = new javax.swing.JTable();
+        jLabel18 = new javax.swing.JLabel();
+        btnFurgonetasPDF = new javax.swing.JButton();
         jfrmAlquilar = new javax.swing.JInternalFrame();
         cbxMatriculas = new javax.swing.JComboBox<>();
         cbxClientes = new javax.swing.JComboBox<>();
         jdateAlquiler = new com.toedter.calendar.JDateChooser();
         jDateDevolucion = new com.toedter.calendar.JDateChooser();
         btnAlquilar = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jfrmListaAlquilados = new javax.swing.JInternalFrame();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tblAlquilados = new javax.swing.JTable();
+        jLabel19 = new javax.swing.JLabel();
+        btnAlquilerPDF = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuArchivo = new javax.swing.JMenu();
         mnuCerrarSesion = new javax.swing.JMenuItem();
@@ -295,7 +329,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addComponent(btnIngresar)
-                .addContainerGap(400, Short.MAX_VALUE))
+                .addContainerGap(472, Short.MAX_VALUE))
         );
 
         jfrmListarVehiculos.setClosable(true);
@@ -330,21 +364,30 @@ public class MdiVehiculos extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblVehiculos);
 
+        jLabel13.setText("LISTA DE VEHICULOS");
+
         javax.swing.GroupLayout jfrmListarVehiculosLayout = new javax.swing.GroupLayout(jfrmListarVehiculos.getContentPane());
         jfrmListarVehiculos.getContentPane().setLayout(jfrmListarVehiculosLayout);
         jfrmListarVehiculosLayout.setHorizontalGroup(
             jfrmListarVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jfrmListarVehiculosLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addGroup(jfrmListarVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jfrmListarVehiculosLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jfrmListarVehiculosLayout.createSequentialGroup()
+                        .addGap(252, 252, 252)
+                        .addComponent(jLabel13)))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jfrmListarVehiculosLayout.setVerticalGroup(
             jfrmListarVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jfrmListarVehiculosLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jfrmListarVehiculosLayout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         jfrmListarUsuarios.setClosable(true);
@@ -379,21 +422,43 @@ public class MdiVehiculos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblUsuario);
 
+        jLabel14.setText("LISTA USUARIOS");
+
+        btnUsuariosPDF.setText("Exportar");
+        btnUsuariosPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosPDFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jfrmListarUsuariosLayout = new javax.swing.GroupLayout(jfrmListarUsuarios.getContentPane());
         jfrmListarUsuarios.getContentPane().setLayout(jfrmListarUsuariosLayout);
         jfrmListarUsuariosLayout.setHorizontalGroup(
             jfrmListarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jfrmListarUsuariosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
+            .addGroup(jfrmListarUsuariosLayout.createSequentialGroup()
+                .addGroup(jfrmListarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jfrmListarUsuariosLayout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(jLabel14))
+                    .addGroup(jfrmListarUsuariosLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jfrmListarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jfrmListarUsuariosLayout.createSequentialGroup()
+                                .addGap(183, 183, 183)
+                                .addComponent(btnUsuariosPDF)))))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jfrmListarUsuariosLayout.setVerticalGroup(
             jfrmListarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jfrmListarUsuariosLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnUsuariosPDF)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jfrmCrearVehiculos.setClosable(true);
@@ -709,21 +774,42 @@ public class MdiVehiculos extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tblGeneralVehiculos);
 
+        btnGeneralPDF.setText("Exportar");
+        btnGeneralPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGeneralPDFActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("LISTADO GENERAL DE VEHICULOS");
+
         javax.swing.GroupLayout jfrmListadoGeneralVehiculoLayout = new javax.swing.GroupLayout(jfrmListadoGeneralVehiculo.getContentPane());
         jfrmListadoGeneralVehiculo.getContentPane().setLayout(jfrmListadoGeneralVehiculoLayout);
         jfrmListadoGeneralVehiculoLayout.setHorizontalGroup(
             jfrmListadoGeneralVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jfrmListadoGeneralVehiculoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+            .addGroup(jfrmListadoGeneralVehiculoLayout.createSequentialGroup()
+                .addGroup(jfrmListadoGeneralVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jfrmListadoGeneralVehiculoLayout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(jLabel15))
+                    .addGroup(jfrmListadoGeneralVehiculoLayout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(btnGeneralPDF))
+                    .addGroup(jfrmListadoGeneralVehiculoLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jfrmListadoGeneralVehiculoLayout.setVerticalGroup(
             jfrmListadoGeneralVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jfrmListadoGeneralVehiculoLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(7, 7, 7)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnGeneralPDF)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jfrmListadoCoche.setClosable(true);
@@ -758,21 +844,37 @@ public class MdiVehiculos extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblCoche);
 
+        jLabel16.setText("LISTADO DE COCHES");
+
+        btnCochesPDF.setText("Exportar");
+
         javax.swing.GroupLayout jfrmListadoCocheLayout = new javax.swing.GroupLayout(jfrmListadoCoche.getContentPane());
         jfrmListadoCoche.getContentPane().setLayout(jfrmListadoCocheLayout);
         jfrmListadoCocheLayout.setHorizontalGroup(
             jfrmListadoCocheLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jfrmListadoCocheLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+            .addGroup(jfrmListadoCocheLayout.createSequentialGroup()
+                .addGroup(jfrmListadoCocheLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jfrmListadoCocheLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jfrmListadoCocheLayout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(jLabel16))
+                    .addGroup(jfrmListadoCocheLayout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(btnCochesPDF)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jfrmListadoCocheLayout.setVerticalGroup(
             jfrmListadoCocheLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jfrmListadoCocheLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addContainerGap()
+                .addComponent(jLabel16)
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnCochesPDF)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jfrmListadoMoto.setClosable(true);
@@ -807,21 +909,37 @@ public class MdiVehiculos extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tblMoto);
 
+        jLabel17.setText("LISTADO MOTOS");
+
+        btnMotosPDF.setText("Exportar");
+
         javax.swing.GroupLayout jfrmListadoMotoLayout = new javax.swing.GroupLayout(jfrmListadoMoto.getContentPane());
         jfrmListadoMoto.getContentPane().setLayout(jfrmListadoMotoLayout);
         jfrmListadoMotoLayout.setHorizontalGroup(
             jfrmListadoMotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jfrmListadoMotoLayout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+            .addGroup(jfrmListadoMotoLayout.createSequentialGroup()
+                .addGroup(jfrmListadoMotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jfrmListadoMotoLayout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(jLabel17))
+                    .addGroup(jfrmListadoMotoLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jfrmListadoMotoLayout.createSequentialGroup()
+                        .addGap(243, 243, 243)
+                        .addComponent(btnMotosPDF)))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jfrmListadoMotoLayout.setVerticalGroup(
             jfrmListadoMotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jfrmListadoMotoLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jfrmListadoMotoLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnMotosPDF)
+                .addGap(13, 13, 13))
         );
 
         jfrmListadoFurgoneta.setClosable(true);
@@ -856,21 +974,37 @@ public class MdiVehiculos extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(tblFurgoneta);
 
+        jLabel18.setText("LISTADO FURGONETAS");
+
+        btnFurgonetasPDF.setText("Exportar");
+
         javax.swing.GroupLayout jfrmListadoFurgonetaLayout = new javax.swing.GroupLayout(jfrmListadoFurgoneta.getContentPane());
         jfrmListadoFurgoneta.getContentPane().setLayout(jfrmListadoFurgonetaLayout);
         jfrmListadoFurgonetaLayout.setHorizontalGroup(
             jfrmListadoFurgonetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jfrmListadoFurgonetaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+            .addGroup(jfrmListadoFurgonetaLayout.createSequentialGroup()
+                .addGroup(jfrmListadoFurgonetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jfrmListadoFurgonetaLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jfrmListadoFurgonetaLayout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(jLabel18))
+                    .addGroup(jfrmListadoFurgonetaLayout.createSequentialGroup()
+                        .addGap(209, 209, 209)
+                        .addComponent(btnFurgonetasPDF)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jfrmListadoFurgonetaLayout.setVerticalGroup(
             jfrmListadoFurgonetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jfrmListadoFurgonetaLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnFurgonetasPDF)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jfrmAlquilar.setClosable(true);
@@ -893,6 +1027,14 @@ public class MdiVehiculos extends javax.swing.JFrame {
             }
         });
 
+        jLabel20.setText("Vehiculos disponibles");
+
+        jLabel21.setText("Clientes");
+
+        jLabel22.setText("Fecha de alquiler");
+
+        jLabel23.setText("Fecha de devolucion");
+
         javax.swing.GroupLayout jfrmAlquilarLayout = new javax.swing.GroupLayout(jfrmAlquilar.getContentPane());
         jfrmAlquilar.getContentPane().setLayout(jfrmAlquilarLayout);
         jfrmAlquilarLayout.setHorizontalGroup(
@@ -903,30 +1045,116 @@ public class MdiVehiculos extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addGroup(jfrmAlquilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbxMatriculas, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jdateAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jdateAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))
                         .addGap(74, 74, 74)
                         .addGroup(jfrmAlquilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jDateDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cbxClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23)))
                     .addGroup(jfrmAlquilarLayout.createSequentialGroup()
                         .addGap(206, 206, 206)
                         .addComponent(btnAlquilar)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jfrmAlquilarLayout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel21)
+                .addGap(96, 96, 96))
         );
         jfrmAlquilarLayout.setVerticalGroup(
             jfrmAlquilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jfrmAlquilarLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(15, 15, 15)
+                .addGroup(jfrmAlquilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jfrmAlquilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxMatriculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(15, 15, 15)
+                .addGroup(jfrmAlquilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jfrmAlquilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDateDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jdateAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAlquilar)
                 .addGap(35, 35, 35))
+        );
+
+        jfrmListaAlquilados.setClosable(true);
+        jfrmListaAlquilados.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        jfrmListaAlquilados.setIconifiable(true);
+        jfrmListaAlquilados.setMaximizable(true);
+        jfrmListaAlquilados.setResizable(true);
+        jfrmListaAlquilados.setVisible(false);
+
+        tblAlquilados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Matricula Vehiculo", "Cliente", "Fecha de Alquiler", "Fecha de Devolucion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(tblAlquilados);
+
+        jLabel19.setText("LISTA DE ALQUILER");
+
+        btnAlquilerPDF.setText("Exportar");
+        btnAlquilerPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlquilerPDFActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jfrmListaAlquiladosLayout = new javax.swing.GroupLayout(jfrmListaAlquilados.getContentPane());
+        jfrmListaAlquilados.getContentPane().setLayout(jfrmListaAlquiladosLayout);
+        jfrmListaAlquiladosLayout.setHorizontalGroup(
+            jfrmListaAlquiladosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jfrmListaAlquiladosLayout.createSequentialGroup()
+                .addGroup(jfrmListaAlquiladosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jfrmListaAlquiladosLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jfrmListaAlquiladosLayout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(jLabel19))
+                    .addGroup(jfrmListaAlquiladosLayout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(btnAlquilerPDF)))
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+        jfrmListaAlquiladosLayout.setVerticalGroup(
+            jfrmListaAlquiladosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jfrmListaAlquiladosLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel19)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAlquilerPDF)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jDesktopPane1.setLayer(jfrmAcceder, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -939,6 +1167,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
         jDesktopPane1.setLayer(jfrmListadoMoto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jfrmListadoFurgoneta, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jfrmAlquilar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jfrmListaAlquilados, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -950,26 +1179,22 @@ public class MdiVehiculos extends javax.swing.JFrame {
                         .addGap(163, 163, 163)
                         .addComponent(jfrmCrearVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
-                        .addComponent(jfrmListarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jfrmListarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(93, 93, 93)
                         .addComponent(jfrmAlquilar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jfrmCrearUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jfrmListadoGeneralVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)))
+                            .addComponent(jfrmListaAlquilados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jfrmCrearUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jfrmListadoGeneralVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jfrmAcceder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(180, 180, 180))
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
                     .addGap(732, 732, 732)
-                    .addComponent(jfrmListarVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jfrmListarVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(24, 24, 24)))
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -1007,12 +1232,14 @@ public class MdiVehiculos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jfrmCrearUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jfrmAlquilar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(234, Short.MAX_VALUE))
+                            .addComponent(jfrmAlquilar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jfrmListaAlquilados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(198, Short.MAX_VALUE))
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
                     .addGap(54, 54, 54)
-                    .addComponent(jfrmListarVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jfrmListarVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(858, Short.MAX_VALUE)))
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -1113,6 +1340,11 @@ public class MdiVehiculos extends javax.swing.JFrame {
         mnuAlquila.setText("Alquiler");
 
         mnuListaAlquiler.setText("Lista de alquiler");
+        mnuListaAlquiler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuListaAlquilerActionPerformed(evt);
+            }
+        });
         mnuAlquila.add(mnuListaAlquiler);
 
         mnuAlaquilarVehiculo.setText("Alquilar Vehiculo");
@@ -1157,7 +1389,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
             //Significa que diligencio correo y contraseña
             Pattern pattern = Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");
             Matcher matcher = pattern.matcher(txtCorreo.getText());
-
+            
             if (matcher.find() == true) {
                 usuarioAutenticado = gestionLogin.encontrarUsuario(txtCorreo.getText(), txtPassword.getText());
                 if (usuarioAutenticado == null) {
@@ -1166,9 +1398,9 @@ public class MdiVehiculos extends javax.swing.JFrame {
                 } else {
                     gestionListarUsuario = new GestionUsuario();
                     gestionListaVehiculo = new GestionVehiculo();
-
+                    
                     JOptionPane.showMessageDialog(this,
-                            "Bienvenido " + usuarioAutenticado, "Bienvenido", 1);
+                            "Bienvenido " + usuarioAutenticado.toString1(), "Bienvenido", 1);
                     mnuArchivo.setEnabled(true);
                     gestionarPermisosMenu();
                     jfrmAcceder.hide();
@@ -1176,12 +1408,12 @@ public class MdiVehiculos extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this,
                         "El correo no tiene un formato válido", "Datos Erróneos", 0);
-
+                
             }
-
+            
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
-
+    
     private void llenarUsuario() {
         DefaultTableModel model = (DefaultTableModel) tblUsuario.getModel();
         model.getDataVector().removeAllElements();
@@ -1189,43 +1421,53 @@ public class MdiVehiculos extends javax.swing.JFrame {
             model.addRow(usuario.obtenerArregloObjeto());
         }
         tblUsuario.setModel(model);
-
+        
     }
-
+    
+    private void llenarAlquiler() {
+        DefaultTableModel model = (DefaultTableModel) tblAlquilados.getModel();
+        model.getDataVector().removeAllElements();
+        for (AlquilarVehiculo alquilar : gestionListaVehiculo.getVehiculosAlquilados()) {
+            model.addRow(alquilar.obtenerArregloObjeto());
+        }
+        tblAlquilados.setModel(model);
+        
+    }
+    
     private void listarMotos() {
         DefaultTableModel model = (DefaultTableModel) tblMoto.getModel();
         model.getDataVector().removeAllElements();
-
+        
         for (AbstractVehiculo moto : gestionListaVehiculo.obtenerVehiculo("Moto")) {
             model.addRow(moto.obtenerArregloObjeto());
         }
         tblMoto.setModel(model);
     }
-
+    
     private void listarCoches() {
         DefaultTableModel model = (DefaultTableModel) tblCoche.getModel();
         model.getDataVector().removeAllElements();
-
+        
         for (AbstractVehiculo coche : gestionListaVehiculo.obtenerVehiculo("Coche")) {
             model.addRow(coche.obtenerArregloObjeto());
         }
         tblCoche.setModel(model);
     }
-
+    
     private void listarFurgonetas() {
         DefaultTableModel model = (DefaultTableModel) tblFurgoneta.getModel();
         model.getDataVector().removeAllElements();
-
+        
         for (AbstractVehiculo furgoneta : gestionListaVehiculo.obtenerVehiculo("Furgoneta")) {
             model.addRow(furgoneta.obtenerArregloObjeto());
         }
         tblFurgoneta.setModel(model);
     }
-
+    
     private void listadoGeneral() {
         DefaultTableModel model = (DefaultTableModel) tblGeneralVehiculos.getModel();
         model.getDataVector().removeAllElements();
-
+        
         for (AbstractVehiculo general : gestionListaVehiculo.obtenerVehiculo("")) {
             model.addRow(general.obtenerArregloObjeto());
         }
@@ -1291,8 +1533,9 @@ public class MdiVehiculos extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, ex.getMessage(), "error en vehiculo", 0);
                 }
             }
-
+            
         }
+        llenarComboMatricula();
         JOptionPane.showMessageDialog(this, "correcto");
 
     }//GEN-LAST:event_btnCrearVehiculoActionPerformed
@@ -1349,7 +1592,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
             } else {
                 bandera = true;
             }
-
+            
         } else if (rbCliente.isSelected() == true) {
             if (txtCrearCedula.getText() == null || txtCrearCedula.getText().compareTo("") == 0) {
                 JOptionPane.showMessageDialog(this,
@@ -1362,10 +1605,10 @@ public class MdiVehiculos extends javax.swing.JFrame {
             }
         }
         if (bandera) {
-
+            
             if (rbAdministrador.isSelected() == true) {
                 tipo = 0;
-
+                
             } else if (rbUsuario.isSelected() == true) {
                 tipo = 1;
             } else {
@@ -1373,19 +1616,19 @@ public class MdiVehiculos extends javax.swing.JFrame {
             }
             Usuario us = new Usuario(txtCrearCedula.getText(), txtCrearNombre.getText(), txtCrearCorreo.getText(), txtCrearPassword.getPassword().toString(), gestionListarUsuario.getTipoUsuarios()[tipo]);
             try {
-
+                
                 gestionListarUsuario.adicionarUsuario(us);
                 llenarUsuario();
             } catch (ExcepcionVehiculo ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "error en usuario", 0);
             }
         }
+        llenarComboCliente();
         JOptionPane.showMessageDialog(this, "correcto");
     }//GEN-LAST:event_btnCrearUsuarioActionPerformed
 
     private void mnuListarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListarUsuarioActionPerformed
         // TODO add your handling code here:
-
         llenarUsuario();
         jfrmListarUsuarios.repaint();
         jfrmListarUsuarios.show();
@@ -1499,7 +1742,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
         if (jfrmAlquilar.isIcon()) {
             try {
                 jfrmAlquilar.setMaximum(true);
-
+                
             } catch (PropertyVetoException ex) {
                 Logger.getLogger(MdiVehiculos.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1518,24 +1761,88 @@ public class MdiVehiculos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "debe seleccionar una fecha de devolucion");
         } else if (jdateAlquiler.getDate().compareTo(jDateDevolucion.getDate()) > 0) {
             JOptionPane.showMessageDialog(this, "La fecha de alquiler debe ser anterior a la fecha de devolucion");
-
+            
         } else {
-
-            AbstractVehiculo matricula;
-            String boton = cbxMatriculas.getSelectedItem().toString();
-            String[] partes = boton.split("-");
-            String boton1 = partes[0];
-            matricula = gestionListaVehiculo.encontrarMatricula(boton1);
-
-            JOptionPane.showMessageDialog(this, matricula.mostrarDatos());
-            matricula.alquilar();
+            
+            Usuario cliente = (Usuario) cbxClientes.getSelectedItem();
+            AbstractVehiculo vehiculoAlquilado = (AbstractVehiculo) cbxMatriculas.getSelectedItem();
+            
+            JOptionPane.showMessageDialog(this, vehiculoAlquilado.mostrarDatos());
+            vehiculoAlquilado.alquilar();
             llenarComboMatricula();
             
-            AlquilarVehiculo vehiculoAlquiler;
-            //vehiculoAlquiler =
-
+            AlquilarVehiculo alquilarVehiculo = new AlquilarVehiculo(vehiculoAlquilado,cliente,
+                    jdateAlquiler.getDate(), jDateDevolucion.getDate());
+            
+            gestionListaVehiculo.adicionarVehiculoAlquilado(alquilarVehiculo);
+            llenarAlquiler();
+            JOptionPane.showMessageDialog(this, "Alquilado al cliente " + cliente);
+            
+        }
     }//GEN-LAST:event_btnAlquilarActionPerformed
-    }
+    
+
+    private void mnuListaAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListaAlquilerActionPerformed
+        // TODO add your handling code here:
+        llenarAlquiler();
+        jfrmListaAlquilados.repaint();
+        jfrmListaAlquilados.show();
+        if (jfrmListaAlquilados.isIcon()) {
+            try {
+                jfrmListaAlquilados.setMaximum(true);
+            } catch (PropertyVetoException ex) {
+                Logger.getLogger(MdiVehiculos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_mnuListaAlquilerActionPerformed
+
+    private void btnAlquilerPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlquilerPDFActionPerformed
+        // TODO add your handling code here:
+         try
+        {
+            // TODO add your handling code here:
+            ArchivoPDF alquilerPDF = new ArchivoPDF();
+            alquilerPDF.crearDocumentoPdfVehiculosAlquilados("./src/archivospdf/tablas.pdf", 
+                    gestionListaVehiculo.getVehiculosAlquilados());
+            alquilerPDF.abrirDocumento("./src/archivospdf/tablas.pdf");
+        }
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnAlquilerPDFActionPerformed
+
+    private void btnGeneralPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeneralPDFActionPerformed
+        // TODO add your handling code here:
+          try
+        {
+            // TODO add your handling code here:
+            ArchivoPDF VehiculosPDF = new ArchivoPDF();
+            VehiculosPDF.crearDocumentoPdfVehiculosGeneral("./src/archivospdf/tablas.pdf", 
+                    gestionListaVehiculo.getVehiculos());
+            VehiculosPDF.abrirDocumento("./src/archivospdf/tablas.pdf");
+        }
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnGeneralPDFActionPerformed
+
+    private void btnUsuariosPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosPDFActionPerformed
+        // TODO add your handling code here:
+          try
+        {
+            // TODO add your handling code here:
+            ArchivoPDF usuariosPDF = new ArchivoPDF();
+            usuariosPDF.crearDocumentoPdfUsuarios("./src/archivospdf/tablas.pdf", 
+                    gestionListarUsuario.getUsuarios());
+            usuariosPDF.abrirDocumento("./src/archivospdf/tablas.pdf");
+        }
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnUsuariosPDFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1551,21 +1858,21 @@ public class MdiVehiculos extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
+                    
                 }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(MdiVehiculos.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(MdiVehiculos.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(MdiVehiculos.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MdiVehiculos.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -1585,9 +1892,15 @@ public class MdiVehiculos extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bgUsuarios;
     private javax.swing.ButtonGroup bgVehiculos;
     private javax.swing.JButton btnAlquilar;
+    private javax.swing.JButton btnAlquilerPDF;
+    private javax.swing.JButton btnCochesPDF;
     private javax.swing.JButton btnCrearUsuario;
     private javax.swing.JButton btnCrearVehiculo;
+    private javax.swing.JButton btnFurgonetasPDF;
+    private javax.swing.JButton btnGeneralPDF;
     private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnMotosPDF;
+    private javax.swing.JButton btnUsuariosPDF;
     private javax.swing.JComboBox<String> cbxClientes;
     private javax.swing.JComboBox<String> cbxMatriculas;
     private javax.swing.JCheckBox chbxCasco;
@@ -1600,7 +1913,18 @@ public class MdiVehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1615,11 +1939,13 @@ public class MdiVehiculos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private com.toedter.calendar.JDateChooser jdateAlquiler;
     private javax.swing.JInternalFrame jfrmAcceder;
     private javax.swing.JInternalFrame jfrmAlquilar;
     private javax.swing.JInternalFrame jfrmCrearUsuarios;
     private javax.swing.JInternalFrame jfrmCrearVehiculos;
+    private javax.swing.JInternalFrame jfrmListaAlquilados;
     private javax.swing.JInternalFrame jfrmListadoCoche;
     private javax.swing.JInternalFrame jfrmListadoFurgoneta;
     private javax.swing.JInternalFrame jfrmListadoGeneralVehiculo;
@@ -1650,6 +1976,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdFurgoneta;
     private javax.swing.JRadioButton rdMoto;
     private javax.swing.JSpinner spnCapFurgoneta;
+    private javax.swing.JTable tblAlquilados;
     private javax.swing.JTable tblCoche;
     private javax.swing.JTable tblFurgoneta;
     private javax.swing.JTable tblGeneralVehiculos;

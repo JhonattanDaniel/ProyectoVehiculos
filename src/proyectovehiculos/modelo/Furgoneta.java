@@ -58,7 +58,8 @@ public class Furgoneta extends AbstractVehiculo {
     }
 
     @Override
-    public String listarCombos() {
+    public String toString() {
         return this.getMatricula() + "-" + this.getClass().getSimpleName();
     }
+
 }

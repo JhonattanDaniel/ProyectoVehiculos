@@ -11,6 +11,7 @@ import static java.util.Collections.list;
 import java.util.List;
 import proyectovehiculos.abstracta.AbstractVehiculo;
 import proyectovehiculos.excepciones.ExcepcionVehiculo;
+import proyectovehiculos.modelo.AlquilarVehiculo;
 import proyectovehiculos.modelo.Coche;
 import proyectovehiculos.modelo.Furgoneta;
 import proyectovehiculos.modelo.Moto;
@@ -24,9 +25,14 @@ import proyectovehiculos.utilidades.ArchivoPlano;
 public class GestionVehiculo implements Serializable {
 
     public List<AbstractVehiculo> vehiculos;
+    public List<AlquilarVehiculo> vehiculosAlquilados;
+    
 
     public GestionVehiculo() {
         llenarVehiculos();
+        vehiculosAlquilados = new ArrayList<>();
+                
+        
     }
 
     public List<AbstractVehiculo> getVehiculos() {
@@ -35,6 +41,14 @@ public class GestionVehiculo implements Serializable {
 
     public void setVehiculos(List<AbstractVehiculo> vehiculos) {
         this.vehiculos = vehiculos;
+    }
+
+    public List<AlquilarVehiculo> getVehiculosAlquilados() {
+        return vehiculosAlquilados;
+    }
+
+    public void setVehiculosAlquilados(List<AlquilarVehiculo> vehiculosAlquilados) {
+        this.vehiculosAlquilados = vehiculosAlquilados;
     }
 
     public void llenarVehiculos() {
@@ -92,13 +106,11 @@ public class GestionVehiculo implements Serializable {
         }
         return false;
     }
- public AbstractVehiculo encontrarMatricula(String matr) {
-        for (AbstractVehiculo vehiculo : vehiculos) {
-
-            if (vehiculo.getMatricula().equals(matr)) {
-                      return vehiculo;  
-            }
-            
-        }return null;
+    
+    public void adicionarVehiculoAlquilado(AlquilarVehiculo vehiculoAlquilado) {
+        
+        vehiculosAlquilados.add(vehiculoAlquilado);
+        // agregarla en el archivo
     }
+
 }

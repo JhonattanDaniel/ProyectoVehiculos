@@ -42,7 +42,7 @@ public class GestionUsuario {
     public GestionUsuario() {
         llenarTiposUsuario();
         llenarUsuarios();
-        
+
     }
 
     private void llenarTiposUsuario() {
@@ -92,3 +92,4 @@ public class GestionUsuario {
         return false;
     }
 }
+

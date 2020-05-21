@@ -64,8 +64,9 @@ public class Moto extends AbstractVehiculo {
     }
 
     @Override
-    public String listarCombos() {
-        return this.getMatricula() + "-" + this.getClass().getSimpleName();
+    public String toString() {
+         return this.getMatricula() + "-" + this.getClass().getSimpleName();
     }
 
+   
 }

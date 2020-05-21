@@ -70,7 +70,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return this.nombre;
+         return this.getNombre() + "-" + this.getCedula();
     }
 
     public Object[] obtenerArregloObjeto() {
@@ -79,7 +79,7 @@ public class Usuario implements Serializable {
              return data;
     }
     
-    public String listarComboCliente() {
-        return this.getNombre() + "-" + this.getCedula();
+    public String toString1() {
+        return this.getNombre();
     }
 }

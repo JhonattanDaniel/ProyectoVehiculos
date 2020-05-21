@@ -59,8 +59,10 @@ public class Coche extends AbstractVehiculo {
     }
 
     @Override
-    public String listarCombos() {
+    public String toString() {
         return this.getMatricula() + "-" + this.getClass().getSimpleName();
     }
+
+  
 
 }

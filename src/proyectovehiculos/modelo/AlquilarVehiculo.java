@@ -13,15 +13,17 @@ import proyectovehiculos.abstracta.AbstractVehiculo;
  * @author Daniel Quintero
  */
 public class AlquilarVehiculo {
+
     public AbstractVehiculo vehiculo;
     public Usuario usuarioRegistra;
     public Date fechaAlquiler;
     public Date fechaDevolucion;
 
-    public AlquilarVehiculo(AbstractVehiculo vehiculo, Usuario usuarioRegistra) {
+    public AlquilarVehiculo(AbstractVehiculo vehiculo, Usuario usuarioRegistra, Date fechaAlquiler, Date fechaDevolucion) {
         this.vehiculo = vehiculo;
         this.usuarioRegistra = usuarioRegistra;
-        
+        this.fechaAlquiler = fechaAlquiler;
+        this.fechaDevolucion = fechaDevolucion;
     }
 
     public AbstractVehiculo getVehiculo() {
@@ -55,6 +57,10 @@ public class AlquilarVehiculo {
     public void setFechaDevolucion(Date fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
-    
-    
+
+    public Object[] obtenerArregloObjeto() {
+        Object[] dataA = {getVehiculo().toString(), getUsuarioRegistra().toString(), getFechaAlquiler(), getFechaDevolucion()};
+                
+             return dataA;
+    }
 }
