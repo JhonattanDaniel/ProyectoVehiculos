@@ -5,6 +5,7 @@
  */
 package proyectovehiculos.modelo;
 
+import java.util.Calendar;
 import java.util.Date;
 import proyectovehiculos.abstracta.AbstractVehiculo;
 
@@ -16,15 +17,16 @@ public class AlquilarVehiculo {
 
     public AbstractVehiculo vehiculo;
     public Usuario usuarioRegistra;
-    public Date fechaAlquiler;
-    public Date fechaDevolucion;
+    public Calendar fechaAlquiler;
+    public Calendar fechaDevolucion;
 
-    public AlquilarVehiculo(AbstractVehiculo vehiculo, Usuario usuarioRegistra, Date fechaAlquiler, Date fechaDevolucion) {
+    public AlquilarVehiculo(AbstractVehiculo vehiculo, Usuario usuarioRegistra, Calendar fechaAlquiler, Calendar fechaDevolucion) {
         this.vehiculo = vehiculo;
         this.usuarioRegistra = usuarioRegistra;
         this.fechaAlquiler = fechaAlquiler;
         this.fechaDevolucion = fechaDevolucion;
     }
+    
 
     public AbstractVehiculo getVehiculo() {
         return vehiculo;
@@ -42,19 +44,19 @@ public class AlquilarVehiculo {
         this.usuarioRegistra = usuarioRegistra;
     }
 
-    public Date getFechaAlquiler() {
+    public Calendar getFechaAlquiler() {
         return fechaAlquiler;
     }
 
-    public void setFechaAlquiler(Date fechaAlquiler) {
+    public void setFechaAlquiler(Calendar fechaAlquiler) {
         this.fechaAlquiler = fechaAlquiler;
     }
 
-    public Date getFechaDevolucion() {
+    public Calendar getFechaDevolucion() {
         return fechaDevolucion;
     }
 
-    public void setFechaDevolucion(Date fechaDevolucion) {
+    public void setFechaDevolucion(Calendar fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
 

@@ -65,8 +65,14 @@ public class Moto extends AbstractVehiculo {
 
     @Override
     public String toString() {
-         return this.getMatricula() + "-" + this.getClass().getSimpleName();
+        return this.getMatricula() + "-" + this.getClass().getSimpleName() + "(" + estado() + ")";
     }
 
-   
+    public String estado() {
+        if (isEstado() == true) {
+            return "Disponible";
+        }
+        return "Ocupado";
+    }
+
 }

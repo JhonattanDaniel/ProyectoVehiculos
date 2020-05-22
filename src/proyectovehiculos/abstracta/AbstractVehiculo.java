@@ -73,7 +73,7 @@ public abstract class AbstractVehiculo implements VehiculoAble {
    
    public Object[] obtenerArregloPersonaObjeto()
    {
-       Object[] dataV = {getMatricula(), getKm(), isEstado(), getValorAlquiler(), getClass().getName().toString()};
+       Object[] dataV = {getMatricula(), getKm(), isEstado(), getValorAlquiler(), getClass().getSimpleName()};
 
         return dataV;
 
