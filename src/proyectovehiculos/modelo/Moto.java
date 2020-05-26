@@ -42,7 +42,8 @@ public class Moto extends AbstractVehiculo {
 
     @Override
     public double calcularAlquiler(int dias) {
-        return dias;
+        double valor = dias * getValorAlquiler();
+        return valor;
     }
 
     @Override

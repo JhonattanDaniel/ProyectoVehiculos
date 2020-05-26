@@ -38,7 +38,8 @@ public class Coche extends AbstractVehiculo {
 
     @Override
     public double calcularAlquiler(int dias) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double valor = dias * getValorAlquiler();
+        return valor;
     }
 
     @Override

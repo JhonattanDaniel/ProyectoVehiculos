@@ -156,7 +156,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
 
     Date fechaActual = new Date(Calendar.getInstance().getTimeInMillis());
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-    
+ 
 
     //if (vehiculo.getMatricula().compareTo(cbxMatriculas.getItemListeners().toString()) == 0) {
     // return;
@@ -1844,6 +1844,9 @@ public class MdiVehiculos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "El vehiculo selecionado esta ocupado ");
             } else {
                 JOptionPane.showMessageDialog(this, vehiculoAlquilado.mostrarDatos());
+                int dias = gestionListaVehiculo.contarDias(jdateAlquiler, jDateDevolucion);
+                double valor = vehiculoAlquilado.calcularAlquiler(dias);
+                JOptionPane.showMessageDialog(this, "el alquiler durante " + dias + "tiene un precio de " + valor);
                 vehiculoAlquilado.alquilar();
                 llenarComboMatricula();
                 listadoGeneral();

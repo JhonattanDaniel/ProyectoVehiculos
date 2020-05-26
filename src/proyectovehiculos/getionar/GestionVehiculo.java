@@ -5,8 +5,10 @@
  */
 package proyectovehiculos.getionar;
 
+import com.toedter.calendar.JDateChooser;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import static java.util.Collections.list;
 import java.util.Date;
 import java.util.List;
@@ -111,6 +113,23 @@ public class GestionVehiculo implements Serializable {
         vehiculosAlquilados.add(vehiculoAlquilado);
         // agregarla en el archivo
     }
+         public int contarDias(JDateChooser alquiler, JDateChooser devolucion)
+    {
+        if (alquiler != null && devolucion != null)
+        {
+            Calendar fechaAlquiler = alquiler.getCalendar();
+            Calendar fechaDevolucion = devolucion.getCalendar();
+            int dias = -1;
 
+            while (fechaAlquiler.before(fechaDevolucion) || fechaAlquiler.equals(fechaDevolucion))
+            {
+                dias++;
+                fechaAlquiler.add(Calendar.DATE, 1);
+            }
+            return dias;
+        }
+        return 0;
+
+    }
     }
 
