@@ -35,7 +35,7 @@ public class Moto extends AbstractVehiculo {
     public String mostrarDatos() {
 
         String mensaje = "el vehiculo tipo " + this.getClass().getSimpleName() + " con matricula " + this.getMatricula()
-                + " tiene un kilomeraje actual de " + this.getKm() + " un valor de alquiler de " + this.getValorAlquiler() + " y el estado del casco es " + this.isCasco();
+                + " tiene un kilomeraje actual de " + this.getKm() + " un valor de alquiler de " + this.getValorAlquiler() + "y " + casco();
         return mensaje;
 
     }
@@ -76,5 +76,10 @@ public class Moto extends AbstractVehiculo {
         }
         return "Ocupado";
     }
-
+   public String casco() {
+        if (isCasco() == true) {
+            return "Tiene casco";
+        }
+        return "No tiene casco";
+    }
 }

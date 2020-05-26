@@ -180,10 +180,10 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                          <Component id="jfrmAlquilar" min="-2" max="-2" attributes="0"/>
+                          <Component id="jfrmAlquilar" min="-2" pref="0" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jfrmListaAlquilados" min="-2" max="-2" attributes="0"/>
+                              <Component id="jfrmListaAlquilados" min="-2" pref="0" max="-2" attributes="0"/>
                               <Component id="jfrmCrearUsuarios" min="-2" pref="0" max="-2" attributes="0"/>
                               <Component id="jfrmListadoGeneralVehiculo" min="-2" pref="0" max="-2" attributes="0"/>
                           </Group>
@@ -210,7 +210,7 @@
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jfrmListadoMoto" min="-2" max="-2" attributes="0"/>
+                      <Component id="jfrmListadoMoto" min="-2" pref="0" max="-2" attributes="0"/>
                       <EmptySpace pref="145" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -247,10 +247,10 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jfrmCrearUsuarios" min="-2" pref="0" max="-2" attributes="0"/>
-                              <Component id="jfrmAlquilar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jfrmAlquilar" alignment="0" min="-2" pref="0" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jfrmListaAlquilados" min="-2" max="-2" attributes="0"/>
+                          <Component id="jfrmListaAlquilados" min="-2" pref="0" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="198" max="32767" attributes="0"/>
@@ -272,7 +272,7 @@
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jfrmListadoMoto" min="-2" max="-2" attributes="0"/>
+                      <Component id="jfrmListadoMoto" min="-2" pref="0" max="-2" attributes="0"/>
                       <EmptySpace pref="719" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -340,7 +340,7 @@
                       <Component id="txtPassword" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Component id="btnIngresar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="476" max="32767" attributes="0"/>
+                      <EmptySpace pref="480" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1059,7 +1059,7 @@
                       <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="156" max="-2" attributes="0"/>
-                      <EmptySpace pref="79" max="32767" attributes="0"/>
+                      <EmptySpace pref="83" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1125,7 +1125,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="30" max="32767" attributes="0"/>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane5" min="-2" pref="156" max="-2" attributes="0"/>
@@ -1199,7 +1199,7 @@
                       <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane6" min="-2" pref="156" max="-2" attributes="0"/>
-                      <EmptySpace pref="68" max="32767" attributes="0"/>
+                      <EmptySpace pref="72" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1289,7 +1289,7 @@
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                       <Component id="btnDevolver" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jfrmDevolver" min="-2" max="-2" attributes="0"/>
+                      <Component id="jfrmDevolver" min="-2" pref="0" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -1323,7 +1323,7 @@
                               <Component id="btnDevolver" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnAlquilar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jfrmDevolver" min="-2" max="-2" attributes="0"/>
+                          <Component id="jfrmDevolver" min="-2" pref="0" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -1422,7 +1422,7 @@
                                   <Component id="txtKmFinal" min="-2" pref="291" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="85" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1435,7 +1435,7 @@
                           <Component id="txtKmFinal" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btnFinalizar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="28" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

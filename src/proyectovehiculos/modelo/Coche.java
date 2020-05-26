@@ -32,7 +32,7 @@ public class Coche extends AbstractVehiculo {
     @Override
     public String mostrarDatos() {
         String mensaje = "el vehiculo tipo " + this.getClass().getSimpleName() + " con matricula " + this.getMatricula()
-                + " tiene un kilomeraje actual de " + this.getKm() + " un valor de alquiler de " + this.getValorAlquiler() + " y el estado de extras es " + this.isExtras();
+                + " tiene un kilomeraje actual de " + this.getKm() + " un valor de alquiler de " + this.getValorAlquiler() + " y " + extras();
         return mensaje;
     }
 
@@ -71,5 +71,10 @@ public class Coche extends AbstractVehiculo {
         }
         return "Ocupado";
     }
-
+ public String extras() {
+        if (isExtras() == true) {
+            return "Posee extras";
+        }
+        return "No cuenta con extras";
+    }
 }

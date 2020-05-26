@@ -119,7 +119,7 @@ public class GestionVehiculo implements Serializable {
         {
             Calendar fechaAlquiler = alquiler.getCalendar();
             Calendar fechaDevolucion = devolucion.getCalendar();
-            int dias = -1;
+            int dias = 0;
 
             while (fechaAlquiler.before(fechaDevolucion) || fechaAlquiler.equals(fechaDevolucion))
             {
