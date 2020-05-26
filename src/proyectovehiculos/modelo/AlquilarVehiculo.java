@@ -17,15 +17,17 @@ public class AlquilarVehiculo {
 
     public AbstractVehiculo vehiculo;
     public Usuario usuarioRegistra;
-    public Calendar fechaAlquiler;
-    public Calendar fechaDevolucion;
+    public Date fechaAlquiler;
+    public Date fechaDevolucion;
 
-    public AlquilarVehiculo(AbstractVehiculo vehiculo, Usuario usuarioRegistra, Calendar fechaAlquiler, Calendar fechaDevolucion) {
+    public AlquilarVehiculo(AbstractVehiculo vehiculo, Usuario usuarioRegistra, Date fechaAlquiler, Date fechaDevolucion) {
         this.vehiculo = vehiculo;
         this.usuarioRegistra = usuarioRegistra;
         this.fechaAlquiler = fechaAlquiler;
         this.fechaDevolucion = fechaDevolucion;
     }
+
+    
     
 
     public AbstractVehiculo getVehiculo() {
@@ -44,19 +46,19 @@ public class AlquilarVehiculo {
         this.usuarioRegistra = usuarioRegistra;
     }
 
-    public Calendar getFechaAlquiler() {
+    public Date getFechaAlquiler() {
         return fechaAlquiler;
     }
 
-    public void setFechaAlquiler(Calendar fechaAlquiler) {
+    public void setFechaAlquiler(Date fechaAlquiler) {
         this.fechaAlquiler = fechaAlquiler;
     }
 
-    public Calendar getFechaDevolucion() {
+    public Date getFechaDevolucion() {
         return fechaDevolucion;
     }
 
-    public void setFechaDevolucion(Calendar fechaDevolucion) {
+    public void setFechaDevolucion(Date fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
 

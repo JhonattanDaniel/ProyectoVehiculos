@@ -41,13 +41,14 @@ public class Moto extends AbstractVehiculo {
     }
 
     @Override
-    public double calcularAlquiler(int km) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public double calcularAlquiler(int dias) {
+        return dias;
     }
 
     @Override
     public void debolver(int kmFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        setKm(kmFinal);
+        setEstado(true);
     }
 
     @Override

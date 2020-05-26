@@ -61,7 +61,7 @@ public abstract class AbstractVehiculo implements VehiculoAble {
     public abstract String mostrarDatos();
 
     @Override
-    public abstract double calcularAlquiler(int km);
+    public abstract double calcularAlquiler(int dias);
 
     @Override
     public abstract void debolver(int kmFinal);

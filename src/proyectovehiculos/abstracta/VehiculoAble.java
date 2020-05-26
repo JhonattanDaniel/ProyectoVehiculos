@@ -13,7 +13,7 @@ public interface VehiculoAble {
     
     public void alquilar ();
     public void debolver (int kmFinal);
-    public double calcularAlquiler (int km);
+    public double calcularAlquiler (int dias);
     public String mostrarDatos ();
     
     

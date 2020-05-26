@@ -36,13 +36,14 @@ public class Furgoneta extends AbstractVehiculo {
     }
 
     @Override
-    public double calcularAlquiler(int km) {
+    public double calcularAlquiler(int dias) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void debolver(int kmFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        setKm(kmFinal);
+        setEstado(true);
     }
 
     @Override

@@ -210,7 +210,7 @@
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jfrmListadoMoto" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="jfrmListadoMoto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="145" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -272,7 +272,7 @@
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jfrmListadoMoto" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="jfrmListadoMoto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="719" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -1047,10 +1047,6 @@
                               <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
-                              <Component id="btnCochesPDF" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                       <EmptySpace pref="46" max="32767" attributes="0"/>
                   </Group>
@@ -1063,9 +1059,7 @@
                       <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="156" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnCochesPDF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                      <EmptySpace pref="79" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1098,11 +1092,6 @@
                 <Property name="text" type="java.lang.String" value="LISTADO DE COCHES"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnCochesPDF">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Exportar"/>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JInternalFrame" name="jfrmListadoMoto">
@@ -1128,10 +1117,6 @@
                               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                               <Component id="jScrollPane5" min="-2" pref="452" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
-                              <Component id="btnMotosPDF" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                       <EmptySpace pref="77" max="32767" attributes="0"/>
                   </Group>
@@ -1140,13 +1125,11 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane5" min="-2" pref="156" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnMotosPDF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1179,11 +1162,6 @@
                 <Property name="text" type="java.lang.String" value="LISTADO MOTOS"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnMotosPDF">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Exportar"/>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JInternalFrame" name="jfrmListadoFurgoneta">
@@ -1209,10 +1187,6 @@
                               <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
                               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
-                              <Component id="btnFurgonetasPDF" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                       <EmptySpace pref="38" max="32767" attributes="0"/>
                   </Group>
@@ -1225,9 +1199,7 @@
                       <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane6" min="-2" pref="156" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnFurgonetasPDF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="23" max="32767" attributes="0"/>
+                      <EmptySpace pref="68" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1258,11 +1230,6 @@
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
                 <Property name="text" type="java.lang.String" value="LISTADO FURGONETAS"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnFurgonetasPDF">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Exportar"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -1322,7 +1289,7 @@
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                       <Component id="btnDevolver" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jfrmDevolver" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="jfrmDevolver" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -1356,7 +1323,7 @@
                               <Component id="btnDevolver" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnAlquilar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jfrmDevolver" min="-2" pref="0" max="-2" attributes="0"/>
+                          <Component id="jfrmDevolver" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -1455,7 +1422,7 @@
                                   <Component id="txtKmFinal" min="-2" pref="291" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="85" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1468,7 +1435,7 @@
                           <Component id="txtKmFinal" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btnFinalizar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="28" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1480,11 +1447,18 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtKmFinal">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtKmFinalActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtKmFinalKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnFinalizar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Finalizar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFinalizarActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

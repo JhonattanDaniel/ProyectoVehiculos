@@ -8,6 +8,7 @@ package proyectovehiculos.getionar;
 import java.io.Serializable;
 import java.util.ArrayList;
 import static java.util.Collections.list;
+import java.util.Date;
 import java.util.List;
 import proyectovehiculos.abstracta.AbstractVehiculo;
 import proyectovehiculos.excepciones.ExcepcionVehiculo;
@@ -26,13 +27,11 @@ public class GestionVehiculo implements Serializable {
 
     public List<AbstractVehiculo> vehiculos;
     public List<AlquilarVehiculo> vehiculosAlquilados;
-    
 
     public GestionVehiculo() {
         llenarVehiculos();
         vehiculosAlquilados = new ArrayList<>();
-                
-        
+
     }
 
     public List<AbstractVehiculo> getVehiculos() {
@@ -106,11 +105,12 @@ public class GestionVehiculo implements Serializable {
         }
         return false;
     }
-    
+
     public void adicionarVehiculoAlquilado(AlquilarVehiculo vehiculoAlquilado) {
-        
+
         vehiculosAlquilados.add(vehiculoAlquilado);
         // agregarla en el archivo
     }
 
-}
+    }
+
