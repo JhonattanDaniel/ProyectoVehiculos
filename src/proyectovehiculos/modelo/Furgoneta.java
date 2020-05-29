@@ -44,7 +44,7 @@ public class Furgoneta extends AbstractVehiculo {
     @Override
     public void debolver(int kmFinal) {
         setKm(kmFinal);
-        setEstado(true);
+        //setEstado(true);
     }
 
     @Override

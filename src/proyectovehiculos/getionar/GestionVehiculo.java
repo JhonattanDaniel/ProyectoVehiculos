@@ -29,11 +29,12 @@ public class GestionVehiculo implements Serializable {
 
     public List<AbstractVehiculo> vehiculos;
     public List<AlquilarVehiculo> vehiculosAlquilados;
+    public List<AlquilarVehiculo> VehiculosOcupados;
 
     public GestionVehiculo() {
         llenarVehiculos();
         vehiculosAlquilados = new ArrayList<>();
-
+        VehiculosOcupados = new ArrayList<>();
     }
 
     public List<AbstractVehiculo> getVehiculos() {
@@ -113,16 +114,14 @@ public class GestionVehiculo implements Serializable {
         vehiculosAlquilados.add(vehiculoAlquilado);
         // agregarla en el archivo
     }
-         public int contarDias(JDateChooser alquiler, JDateChooser devolucion)
-    {
-        if (alquiler != null && devolucion != null)
-        {
+
+    public int contarDias(JDateChooser alquiler, JDateChooser devolucion) {
+        if (alquiler != null && devolucion != null) {
             Calendar fechaAlquiler = alquiler.getCalendar();
             Calendar fechaDevolucion = devolucion.getCalendar();
             int dias = 0;
 
-            while (fechaAlquiler.before(fechaDevolucion) || fechaAlquiler.equals(fechaDevolucion))
-            {
+            while (fechaAlquiler.before(fechaDevolucion) || fechaAlquiler.equals(fechaDevolucion)) {
                 dias++;
                 fechaAlquiler.add(Calendar.DATE, 1);
             }
@@ -131,5 +130,28 @@ public class GestionVehiculo implements Serializable {
         return 0;
 
     }
+    public List<AlquilarVehiculo> llenarListaOcupados(AbstractVehiculo vehiculoOcupado){
+        for (AlquilarVehiculo vehiculoAlquilado : getVehiculosAlquilados()) {
+            if(vehiculoAlquilado.getVehiculo().equals(vehiculoOcupado)){
+                VehiculosOcupados.add(vehiculoAlquilado);
+            }
+        }
+        return VehiculosOcupados;
     }
-
+    public boolean  ocupacionFechas(List<AlquilarVehiculo> nuevaLista, AbstractVehiculo vehiculoOcupado, Date inicio, Date fin){
+        for (AlquilarVehiculo ocupacionFechas : nuevaLista) {
+            if(ocupacionFechas.getVehiculo().equals(vehiculoOcupado)){
+                if(ocupacionFechas.getFechaDevolucion().compareTo(inicio) >= 0 && 
+                        ocupacionFechas.getFechaAlquiler().compareTo(fin) <= 0){
+                    return false;
+                }
+            }else{
+                continue;
+            
+            }
+            
+        }
+        return true;
+    }
+    
+}

@@ -38,7 +38,7 @@ import java.util.Locale;
  * @author Daniel Quintero
  */
 public class MdiVehiculos extends javax.swing.JFrame {
-    
+
     private GestionUsuario gestionLogin;
     private Usuario usuarioAutenticado;
     private GestionUsuario gestionListarUsuario;
@@ -50,7 +50,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
     public MdiVehiculos() {
         initComponents();
     }
-    
+
     private void iniciarMenus(boolean estado) {
         mnuUsuario.setVisible(estado);
         mnuVehiculo.setVisible(estado);
@@ -65,11 +65,11 @@ public class MdiVehiculos extends javax.swing.JFrame {
         mnuListarUsuario.setVisible(estado);
         mnuAlaquilarVehiculo.setVisible(estado);
         mnuListaAlquiler.setVisible(estado);
-        
+
     }
-    
+
     private void gestionarPermisosMenu() {
-        
+
         switch (usuarioAutenticado.getTipoUsuario().getCodigo()) {
             ///administrador
             case "0":
@@ -88,16 +88,16 @@ public class MdiVehiculos extends javax.swing.JFrame {
                 mnuListarCoches.setVisible(true);
                 mnuListarFurgonetas.setVisible(true);
                 mnuListarMotos.setVisible(true);
-                
+
                 break;
-            
+
         }
     }
-    
+
     public void validarBotonVehiculo() {
         if (rdMoto.isSelected()) {
             chbxCasco.setEnabled(true);
-            
+
         } else {
             chbxCasco.setEnabled(false);
         }
@@ -111,9 +111,9 @@ public class MdiVehiculos extends javax.swing.JFrame {
         } else {
             spnCapFurgoneta.setEnabled(false);
         }
-        
+
     }
-    
+
     public void validarBotonUsuario() {
         if (rbAdministrador.isSelected()) {
             txtCrearCorreo.setEnabled(true);
@@ -137,17 +137,17 @@ public class MdiVehiculos extends javax.swing.JFrame {
             txtCrearPassword.setEnabled(true);
         }
     }
-    
+
     public void llenarComboMatricula() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbxMatriculas.getModel();
         model.removeAllElements();
         for (AbstractVehiculo vehiculo : gestionListaVehiculo.vehiculos) {
             model.addElement(vehiculo);
-            
+
         }
         cbxMatriculas.setModel(model);
     }
-    
+
     public void llenarComboCliente() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbxClientes.getModel();
         model.removeAllElements();
@@ -158,9 +158,9 @@ public class MdiVehiculos extends javax.swing.JFrame {
         }
         cbxClientes.setModel(model);
     }
-    
+
     Date fechaActual = new Date(Calendar.getInstance().getTimeInMillis());
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
 
     //if (vehiculo.getMatricula().compareTo(cbxMatriculas.getItemListeners().toString()) == 0) {
     // return;
@@ -1458,7 +1458,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
             //Significa que diligencio correo y contraseña
             Pattern pattern = Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");
             Matcher matcher = pattern.matcher(txtCorreo.getText());
-            
+
             if (matcher.find() == true) {
                 usuarioAutenticado = gestionLogin.encontrarUsuario(txtCorreo.getText(), txtPassword.getText());
                 if (usuarioAutenticado == null) {
@@ -1467,7 +1467,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
                 } else {
                     gestionListarUsuario = new GestionUsuario();
                     gestionListaVehiculo = new GestionVehiculo();
-                    
+
                     JOptionPane.showMessageDialog(this,
                             "Bienvenido " + usuarioAutenticado.toString1(), "Bienvenido", 1);
                     mnuArchivo.setEnabled(true);
@@ -1477,12 +1477,12 @@ public class MdiVehiculos extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this,
                         "El correo no tiene un formato válido", "Datos Erróneos", 0);
-                
+
             }
-            
+
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
-    
+
     private void llenarUsuario() {
         DefaultTableModel model = (DefaultTableModel) tblUsuario.getModel();
         model.getDataVector().removeAllElements();
@@ -1490,9 +1490,9 @@ public class MdiVehiculos extends javax.swing.JFrame {
             model.addRow(usuario.obtenerArregloObjeto());
         }
         tblUsuario.setModel(model);
-        
+
     }
-    
+
     private void llenarAlquiler() {
         DefaultTableModel model = (DefaultTableModel) tblAlquilados.getModel();
         model.getDataVector().removeAllElements();
@@ -1500,43 +1500,43 @@ public class MdiVehiculos extends javax.swing.JFrame {
             model.addRow(alquilar.obtenerArregloObjeto());
         }
         tblAlquilados.setModel(model);
-        
+
     }
-    
+
     private void listarMotos() {
         DefaultTableModel model = (DefaultTableModel) tblMoto.getModel();
         model.getDataVector().removeAllElements();
-        
+
         for (AbstractVehiculo moto : gestionListaVehiculo.obtenerVehiculo("Moto")) {
             model.addRow(moto.obtenerArregloObjeto());
         }
         tblMoto.setModel(model);
     }
-    
+
     private void listarCoches() {
         DefaultTableModel model = (DefaultTableModel) tblCoche.getModel();
         model.getDataVector().removeAllElements();
-        
+
         for (AbstractVehiculo coche : gestionListaVehiculo.obtenerVehiculo("Coche")) {
             model.addRow(coche.obtenerArregloObjeto());
         }
         tblCoche.setModel(model);
     }
-    
+
     private void listarFurgonetas() {
         DefaultTableModel model = (DefaultTableModel) tblFurgoneta.getModel();
         model.getDataVector().removeAllElements();
-        
+
         for (AbstractVehiculo furgoneta : gestionListaVehiculo.obtenerVehiculo("Furgoneta")) {
             model.addRow(furgoneta.obtenerArregloObjeto());
         }
         tblFurgoneta.setModel(model);
     }
-    
+
     private void listadoGeneral() {
         DefaultTableModel model = (DefaultTableModel) tblGeneralVehiculos.getModel();
         model.getDataVector().removeAllElements();
-        
+
         for (AbstractVehiculo general : gestionListaVehiculo.obtenerVehiculo("")) {
             model.addRow(general.obtenerArregloObjeto());
         }
@@ -1599,13 +1599,13 @@ public class MdiVehiculos extends javax.swing.JFrame {
                     listarFurgonetas();
                     listadoGeneral();
                     llenarComboMatricula();
-                    
+
                 } catch (ExcepcionVehiculo ex) {
                     JOptionPane.showMessageDialog(this, ex.getMessage(), "error en vehiculo", 0);
                 }
             }
             JOptionPane.showMessageDialog(this, "correcto");
-            
+
         }
 
     }//GEN-LAST:event_btnCrearVehiculoActionPerformed
@@ -1662,7 +1662,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
             } else {
                 bandera = true;
             }
-            
+
         } else if (rbCliente.isSelected() == true) {
             if (txtCrearCedula.getText() == null || txtCrearCedula.getText().compareTo("") == 0) {
                 JOptionPane.showMessageDialog(this,
@@ -1675,10 +1675,10 @@ public class MdiVehiculos extends javax.swing.JFrame {
             }
         }
         if (bandera) {
-            
+
             if (rbAdministrador.isSelected() == true) {
                 tipo = 0;
-                
+
             } else if (rbUsuario.isSelected() == true) {
                 tipo = 1;
             } else {
@@ -1686,17 +1686,17 @@ public class MdiVehiculos extends javax.swing.JFrame {
             }
             Usuario us = new Usuario(txtCrearCedula.getText(), txtCrearNombre.getText(), txtCrearCorreo.getText(), txtCrearPassword.getPassword().toString(), gestionListarUsuario.getTipoUsuarios()[tipo]);
             try {
-                
+
                 gestionListarUsuario.adicionarUsuario(us);
                 llenarUsuario();
                 llenarComboCliente();
-                
+
             } catch (ExcepcionVehiculo ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "error en usuario", 0);
             }
             JOptionPane.showMessageDialog(this, "correcto");
         }
-        
+
 
     }//GEN-LAST:event_btnCrearUsuarioActionPerformed
 
@@ -1831,7 +1831,7 @@ public class MdiVehiculos extends javax.swing.JFrame {
         if (jfrmAlquilar.isIcon()) {
             try {
                 jfrmAlquilar.setMaximum(true);
-                
+
             } catch (PropertyVetoException ex) {
                 Logger.getLogger(MdiVehiculos.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1852,14 +1852,15 @@ public class MdiVehiculos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "La fecha de alquiler debe ser anterior a la fecha de devolucion");
         } else if (fechaActual.compareTo(jdateAlquiler.getDate()) >= 0) {
             JOptionPane.showMessageDialog(this, "la fecha de Alquiler debe ser vigente");
-            
+
         } else {
-            
+
             Usuario cliente = (Usuario) cbxClientes.getSelectedItem();
             AbstractVehiculo vehiculoAlquilado = (AbstractVehiculo) cbxMatriculas.getSelectedItem();
-            if (vehiculoAlquilado.isEstado() == false) {
-                JOptionPane.showMessageDialog(this, "El vehiculo selecionado esta ocupado ");
-            } else {
+            List<AlquilarVehiculo> nuevaLista = gestionListaVehiculo.llenarListaOcupados(vehiculoAlquilado);
+            boolean respuesta = gestionListaVehiculo.ocupacionFechas(nuevaLista, vehiculoAlquilado, jdateAlquiler.getDate(), jDateDevolucion.getDate());
+
+            if (respuesta) {
                 JOptionPane.showMessageDialog(this, vehiculoAlquilado.mostrarDatos());
                 int dias = gestionListaVehiculo.contarDias(jdateAlquiler, jDateDevolucion);
                 double valor = vehiculoAlquilado.calcularAlquiler(dias);
@@ -1870,18 +1871,22 @@ public class MdiVehiculos extends javax.swing.JFrame {
                 listarCoches();
                 listarFurgonetas();
                 listarMotos();
-                
+
                 AlquilarVehiculo alquilarVehiculo = new AlquilarVehiculo(vehiculoAlquilado, cliente,
                         jdateAlquiler.getDate(), jDateDevolucion.getDate());
-                
+
                 gestionListaVehiculo.adicionarVehiculoAlquilado(alquilarVehiculo);
                 llenarAlquiler();
                 JOptionPane.showMessageDialog(this, "Alquilado al cliente " + cliente);
-                
+            } else {
+                JOptionPane.showMessageDialog(this, "el vehiculo esta ocupado en las fechas indicadas");
             }
+
         }
+
+
     }//GEN-LAST:event_btnAlquilarActionPerformed
-    
+
 
     private void mnuListaAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListaAlquilerActionPerformed
         // TODO add your handling code here:
@@ -1942,12 +1947,12 @@ public class MdiVehiculos extends javax.swing.JFrame {
         if (vehiculoDevolucion.isEstado() == true) {
             JOptionPane.showMessageDialog(this, "El vehiculo selecionado esta disponible ");
         } else {
-            
+
             for (AlquilarVehiculo devolverVehiculo : gestionListaVehiculo.getVehiculosAlquilados()) {
                 if (devolverVehiculo.getVehiculo().equals(vehiculoDevolucion)) {
                     if (formatter.format(fechaActual).compareTo(formatter.format(devolverVehiculo.getFechaDevolucion())) < 0) {
                         JOptionPane.showMessageDialog(this, "el vehiculo esta alquilado hasta " + devolverVehiculo.getFechaDevolucion());
-                        
+
                     } else {
                         cbxMatriculas.setEnabled(false);
                         cbxClientes.setEnabled(false);
@@ -1975,28 +1980,45 @@ public class MdiVehiculos extends javax.swing.JFrame {
         if (txtKmFinal.getText() == null || txtKmFinal.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this,
                     "Debe digitar el Kilometraje de devolucion del vehiculo", "Datos Faltantes", 2);
-            
+
         } else {
-            int kmFin = Integer.parseInt(txtKmFinal.getText());
-            vehiculoDevolucion.debolver(kmFin);
-            llenarComboMatricula();
-            listarMotos();
-            listadoGeneral();
-            listarCoches();
-            listarFurgonetas();
+
             for (AlquilarVehiculo devolverVehiculo : gestionListaVehiculo.getVehiculosAlquilados()) {
+                int kmFin = Integer.parseInt(txtKmFinal.getText());
+                vehiculoDevolucion.debolver(kmFin);
+                llenarComboMatricula();
+                listarMotos();
+                listadoGeneral();
+                listarCoches();
+                listarFurgonetas();
                 if (devolverVehiculo.getVehiculo().equals(vehiculoDevolucion)) {
                     gestionListaVehiculo.getVehiculosAlquilados().remove(devolverVehiculo);
+                    gestionListaVehiculo.VehiculosOcupados.remove(devolverVehiculo);
+                    for (AlquilarVehiculo vehiculoDisponible : gestionListaVehiculo.getVehiculosAlquilados()) {
+                        if (vehiculoDisponible.getVehiculo().equals(vehiculoDevolucion)) {
+                            JOptionPane.showMessageDialog(this, "el vehiculo sigue ocupado");
+                        } else {
+                            vehiculoDevolucion.setEstado(true);
+                            llenarComboMatricula();
+                            listarMotos();
+                            listadoGeneral();
+                            listarCoches();
+                            listarFurgonetas();
+                        }
+                    }
+
+                    llenarAlquiler();
+                    cbxMatriculas.setEnabled(true);
+                    cbxClientes.setEnabled(true);
+                    btnAlquilar.setEnabled(true);
+                    jdateAlquiler.setEnabled(true);
+                    jDateDevolucion.setEnabled(true);
+                    jfrmDevolver.hide();
                 }
-                llenarAlquiler();
-                cbxMatriculas.setEnabled(true);
-                cbxClientes.setEnabled(true);
-                btnAlquilar.setEnabled(true);
-                jdateAlquiler.setEnabled(true);
-                jDateDevolucion.setEnabled(true);
-                jfrmDevolver.hide();
             }
         }
+
+
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void txtKmFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKmFinalKeyTyped
@@ -2028,21 +2050,21 @@ public class MdiVehiculos extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                    
+
                 }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(MdiVehiculos.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
+
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(MdiVehiculos.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
+
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(MdiVehiculos.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MdiVehiculos.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
